@@ -20,7 +20,15 @@ if( isset($_POST["submit"]) ) {
     mysqli_query($conn, $query);
 
     // cek apakah data berhasil di tambahkan atau tidak
-    
+    // var_dump(mysqli_affected_rows($conn));
+
+    if(mysqli_affected_rows($conn) > 0) {
+        echo "berhasil";
+    } else {
+        echo "gagal";
+        echo "<br>";
+        echo mysqli_error($conn);
+    }
 
 }
 
