@@ -1,27 +1,38 @@
+<!-- tambahkan atribut html 5 "required" pada form input jika ada data yang tidak boleh kosong -->
+
+<!-- bagaimana jika user mengisikan element html seperti <h1>sandikgalih@gmail.com</h1> -->
 
 <?php
-require 'functions.php';
+// koneksi ke DBMS
+$conn = mysqli_connect("localhost", "root", "root", "phpdasar");
+
 // cek apakah tombol submit sudah ditekan atau belum
 if( isset($_POST["submit"]) ) {
 
+    // ambil data dari tiap elemen dalam form
+    $nama = $_POST["nama"];
+    $nrp = $_POST["nrp"];
+    $email = $_POST["email"];
+    $jurusan = $_POST["jurusan"];
+    $gambar = $_POST["gambar"];
+
+    // query insert data
+    $query = "INSERT INTO mahasiswa
+                VALUES
+                (0, '$nama','$nrp','$email','$jurusan','$gambar')";
+
+    mysqli_query($conn, $query);
 
     // cek apakah data berhasil di tambahkan atau tidak
-    if( tambah($_POST) > 0 ) {
-        echo "
-            <script>
-            alert('data berasil ditambahkan!');
-            document.location.href = 'index.php';
-            </script>
-        ";
+    // var_dump(mysqli_affected_rows($conn));
+
+    if(mysqli_affected_rows($conn) > 0) {
+        echo "berhasil";
     } else {
-        echo "
-            <script>
-            alert('data berasil ditambahkan!');
-            document.location.href = 'index.php';
-            </script>
-        ";
+        echo "gagal";
+        echo "<br>";
+        echo mysqli_error($conn);
     }
-    
 
 }
 
@@ -41,7 +52,7 @@ if( isset($_POST["submit"]) ) {
         <ul>
             <li>
                 <label for="nrp">NRP : </label>
-                <input type="text" name="nrp" id="nrp" required>
+                <input type="text" name="nrp" id="nrp">
             </li>
             <li>
                 <label for="nama">Nama : </label>
