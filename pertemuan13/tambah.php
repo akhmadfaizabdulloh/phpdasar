@@ -5,10 +5,10 @@ require 'functions.php';
 if( isset($_POST["submit"]) ) {
 
     // debugging (melihat isi dari $_POST)
-    var_dump($_POST);
-    var_dump($_FILES);
-    // die; agar program setelahnya tidak di jalankan
-    die; 
+    // var_dump($_POST);
+    // var_dump($_FILES);
+    // // die; agar program setelahnya tidak di jalankan
+    // die; 
 
 
     // cek apakah data berhasil di tambahkan atau tidak
@@ -22,7 +22,7 @@ if( isset($_POST["submit"]) ) {
     } else {
         echo "
             <script>
-            alert('data berasil ditambahkan!');
+            alert('data gagal ditambahkan!');
             document.location.href = 'index.php';
             </script>
         ";

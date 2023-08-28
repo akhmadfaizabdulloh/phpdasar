@@ -22,7 +22,15 @@ function tambah($data) {
     $nrp = htmlspecialchars($data["nrp"]);
     $email = htmlspecialchars($data["email"]);
     $jurusan = htmlspecialchars($data["jurusan"]);
-    $gambar = htmlspecialchars($data["gambar"]);
+
+    // upload gambar
+    $gambar = upload();
+
+    // if ( $gambar === false )
+    if ( !$gambar ) {
+        return false;
+    }
+
 
     $query = "INSERT INTO mahasiswa
                 VALUES
@@ -31,6 +39,11 @@ function tambah($data) {
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
+}
+
+
+function upload() {
+    return false;
 }
 
 function hapus($id) {
