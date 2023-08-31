@@ -175,5 +175,30 @@ function cari($keyword) {
 }
 
 
+function registrasi($data) {
+    global $conn;
+
+    $username = strtolower( stripslashes($data["username"]) );
+    // stripslashes() >>> agar karakter tertentu seperti 'backslash' tidak masuk ke dalam database
+    // strtolower() >>> supaya yg diinputkan diubah menjadi huruf kecil
+
+
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+
+    // mysqli_real_escape_string() >>> agar user memungkinkan untuk yang diinputkan ada tanda kutipnya (')
+
+    if( $password !== $password2 ) {
+        echo "<script>
+                alert('konfirmasi password tidak sesuai!');
+              </script>";
+        
+        return false;
+    }
+
+    return 1;
+
+}
+
 
 ?>
