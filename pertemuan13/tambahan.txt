@@ -1,0 +1,25 @@
+// Komentar pada video
+
+// https://www.youtube.com/watch?v=Bsdtpx4WUIU&list=PLFIM0718LjIUqXfmEIBE3-uzERZPh3vp6&index=16
+
+
+@ikramwadudu1976
+
+tambahan sedikit, biar enak pas hapus datanya maka kita juga ikut menghapus fotonya agar tidak banyak makan penyimpanan mungkin bisa coba
+
+function hapus($query){
+    global $koneksi;
+    $file = mysqli_fetch_assoc(mysqli_query($koneksi,"SELECT * FROM siswa WHERE id='$query'"));
+    unlink('img/' . $file["gambar"]);
+    $hapus = "DELETE FROM siswa WHERE id='$query'";
+    mysqli_query($koneksi,$hapus);
+    return mysqli_affected_rows($koneksi);
+}
+
+
+
+@khalidmahfudz
+
+Pak Sandika, menurut saya dari pada menggunakan fungsi explode() untuk mengambil ekstensi file, lebih baik menggunakan fungsi pathinfo. CONTOH :
+$format = pathinfo($namaFile, PATHINFO_EXTENSION); //$format menyimpan ekstensi file.
+btw thanks pak atas ilmunya.. semoga berkah :D
