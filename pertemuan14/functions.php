@@ -188,6 +188,21 @@ function registrasi($data) {
 
     // mysqli_real_escape_string() >>> agar user memungkinkan untuk yang diinputkan ada tanda kutipnya (')
 
+
+
+    // cek username sudah ada atau belum
+    $result = mysqli_query($conn, " SELECT username FROM user WHERE username = '$username' ");
+    
+    if( mysqli_fetch_assoc($result) ) {
+        echo "<script>
+                alert('username sudah terdaftar!');
+              </script>";
+        
+        return false;
+    }
+
+
+    // cek konfirmasi password
     if( $password !== $password2 ) {
         echo "<script>
                 alert('konfirmasi password tidak sesuai!');
