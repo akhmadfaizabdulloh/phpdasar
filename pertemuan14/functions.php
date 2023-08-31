@@ -196,7 +196,21 @@ function registrasi($data) {
         return false;
     }
 
-    return 1;
+    // enkripsi password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    // $password = md5($password);
+    // var_dump($password); die;
+
+
+    // tambahkan user baru ke database
+    mysqli_query( $conn, "INSERT INTO user VALUES( NULL, '$username', '$password' )" );
+
+
+    return mysqli_affected_rows($conn);
+    // untuk  mengembalikan angka 1 jika berhasil dan -1 jika gagal
+
+
 
 }
 
