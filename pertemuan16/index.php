@@ -26,6 +26,11 @@ if ( isset($_POST["cari"]) ) {
     <title>Halaman Admin</title>
 </head>
 <body>
+
+
+    <a href="logout.php">Logout</a>
+
+
     <h1>Daftar Mahasiswa</h1>
 
     <a href="tambah.php">Tambah data mahasiswa</a>
