@@ -13,3 +13,10 @@ name = login
 value = true
 
 dengan ini hacker bisa langsung masuk dengan mudah tanpa login
+
+
+// lebih baik kita simpan cookie nya pada database agar lebih aman
+
+
+// dokumentasi php - hash
+https://www.php.net/manual/en/function.hash.php
