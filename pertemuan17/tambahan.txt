@@ -1,18 +1,15 @@
-// Komentar pada video
-
-// https://www.youtube.com/watch?v=b2jUL5RDI18&list=PLFIM0718LjIUqXfmEIBE3-uzERZPh3vp6&index=19
+pertemuan17 - cookie
 
 
+// buat cookie
 
-@m.jamilrahman4971
-
-Untuk mengatasi string kosong
-
-
-if (empty(trim($username)) {
-    return false;
-}
+setcookie('login', 'true', time()+60);
 
 
-Note:
-fungsi trim() => Untuk menghapus whitespace, bisa saja username diisi spasi aja
+saat kita membuat cookie seperti ini, bisa di pastikan web kita tidak aman
+user jahat bisa membuat cookie sendiri menggunakan extenstion cookie editor/EditThisCookie
+
+name = login
+value = true
+
+dengan ini hacker bisa langsung masuk dengan mudah tanpa login
