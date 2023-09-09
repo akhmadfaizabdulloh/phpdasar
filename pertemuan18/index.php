@@ -112,7 +112,15 @@ if ( isset($_POST["cari"]) ) {
         <button type="submit" name="cari">Cari!</button>
 
     </form>
+    
 
+    <!-- navigasi -->
+    <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+        <a href="?halaman=<?= $i; ?>"><?= $i; ?></a>
+    <?php endfor; ?> 
+
+
+    <br>
     <br>
 
     <table border="1" cellpadding="10" cellspacing="0">
