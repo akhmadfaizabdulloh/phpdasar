@@ -41,6 +41,33 @@ var_dump($jumlahHalaman);
 // ceil() >>> pembulatannya ke atas (ceiling = langit-langit)
 
 
+// mengecek halaman yang aktif
+// $halaamnAktif = $_GET["halaman"];
+// var_dump($halaamnAktif);
+// http://localhost/phpdasar/pertemuan18/index.php?halaman=2
+
+
+// agar tidak error saat tidak menuliskan index.php?halaman=2 (tampilkan saja halaman pertama)
+if(isset($_GET["halaman"])) {
+    $halaamnAktif = $_GET["halaman"];
+} else {
+    $halaamnAktif = 1;
+}
+var_dump($halaamnAktif);
+
+// agar if else bisa lebih singkat (efektif) kita gunakan operator ternari
+$halaamnAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
+
+// cara baca :
+// (?) = jika kondisinya bernilai true 
+// maka $halamanAktif di isi dengan $_GET["halaman"]
+// (:) = jika false $halamanAktif diisi dengan ankga 1
+
+
+
+
+
+
 
 $mahasiswa = query("SELECT * FROM mahasiswa LIMIT 0, $jumlahDataPerhalaman");
 
