@@ -8,7 +8,44 @@ if ( !isset($_SESSION["login"]) ) {
 }
 
 require 'functions.php';
-$mahasiswa = query("SELECT * FROM mahasiswa");
+
+// pagination
+
+// $mahasiswa = query("SELECT * FROM mahasiswa");
+
+// $mahasiswa = query("SELECT * FROM mahasiswa LIMIT 1,2");
+
+// $mahasiswa = query("SELECT * FROM mahasiswa LIMIT 5,3");
+
+// konfigurasi
+$jumlahDataPerhalaman = 4;
+
+// jumlah halaman = total data / data perhalaman
+
+// mencari total data
+$result = mysqli_query($conn, "SELECT * FROM mahasiswa");
+$jumlahData = mysqli_num_rows($result);
+var_dump($jumlahData); 
+
+// atau bisa mencari total data menggunakan query yg sudah kita punya
+$jumlahData = count(query("SELECT * FROM mahasiswa"));
+var_dump($jumlahData);
+
+// mencari jumlah halaman
+// mencoba menggunakan round() , floor(), ceil()
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
+var_dump($jumlahHalaman);
+
+// round() >>> untuk membulatkan bilangan pecahan ke desimal terdekatnya. (dibulatkan ke atas)
+// floor() >>> pembuatannya ke bawah (floor = lantai)
+// ceil() >>> pembulatannya ke atas (ceiling = langit-langit)
+
+
+
+$mahasiswa = query("SELECT * FROM mahasiswa LIMIT 0, $jumlahDataPerhalaman");
+
+
+
 
 // tombol cari ditekan
 if ( isset($_POST["cari"]) ) {
