@@ -18,7 +18,7 @@ require 'functions.php';
 // $mahasiswa = query("SELECT * FROM mahasiswa LIMIT 5,3");
 
 // konfigurasi
-$jumlahDataPerhalaman = 4;
+$jumlahDataPerhalaman = 2;
 
 // jumlah halaman = total data / data perhalaman
 
@@ -56,7 +56,7 @@ if(isset($_GET["halaman"])) {
 var_dump($halaamnAktif);
 
 // agar if else bisa lebih singkat (efektif) kita gunakan operator ternari
-$halaamnAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
+$halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
 
 // cara baca :
 // (?) = jika kondisinya bernilai true 
@@ -65,11 +65,17 @@ $halaamnAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
 
 
 
+// mencari awal data setiap halaman
+
+// jika $jumlahDataPerhalaman = 2;
+// halaman2, awalData = 2 (karna halaman1 dimulai dari 0)
+// halaman3, awalData = 4
+
+$awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
 
 
 
-
-$mahasiswa = query("SELECT * FROM mahasiswa LIMIT 0, $jumlahDataPerhalaman");
+$mahasiswa = query("SELECT * FROM mahasiswa LIMIT $awalData, $jumlahDataPerhalaman");
 
 
 
