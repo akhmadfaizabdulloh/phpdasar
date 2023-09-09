@@ -42,18 +42,18 @@ var_dump($jumlahHalaman);
 
 
 // mengecek halaman yang aktif
-// $halaamnAktif = $_GET["halaman"];
-// var_dump($halaamnAktif);
+// $halamanAktif = $_GET["halaman"];
+// var_dump($halamanAktif);
 // http://localhost/phpdasar/pertemuan18/index.php?halaman=2
 
 
 // agar tidak error saat tidak menuliskan index.php?halaman=2 (tampilkan saja halaman pertama)
 if(isset($_GET["halaman"])) {
-    $halaamnAktif = $_GET["halaman"];
+    $halamanAktif = $_GET["halaman"];
 } else {
-    $halaamnAktif = 1;
+    $halamanAktif = 1;
 }
-var_dump($halaamnAktif);
+var_dump($halamanAktif);
 
 // agar if else bisa lebih singkat (efektif) kita gunakan operator ternari
 $halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
@@ -115,9 +115,24 @@ if ( isset($_POST["cari"]) ) {
     
 
     <!-- navigasi -->
+
+    <?php if( $halamanAktif > 1) : ?>
+        <a href="?halaman=<?= $halamanAktif - 1; ?>">&laquo; &lt;</a>
+    <?php endif; ?>
+
+
     <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
-        <a href="?halaman=<?= $i; ?>"><?= $i; ?></a>
+        <?php if( $i == $halamanAktif ) : ?>
+            <a href="?halaman=<?= $i; ?>" style="font-weight: bold; color: red;"><?= $i; ?></a>
+        <?php else : ?>
+            <a href="?halaman=<?= $i; ?>"><?= $i; ?></a>
+        <?php endif; ?>
     <?php endfor; ?> 
+
+
+    <?php if( $halamanAktif < $jumlahHalaman) : ?>
+        <a href="?halaman=<?= $halamanAktif + 1; ?>">&gt; &raquo;</a>
+    <?php endif; ?>
 
 
     <br>
