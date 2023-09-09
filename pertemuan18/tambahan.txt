@@ -1,0 +1,22 @@
+pertemuan17 - cookie
+
+
+// buat cookie
+
+setcookie('login', 'true', time()+60);
+
+
+saat kita membuat cookie seperti ini, bisa di pastikan web kita tidak aman
+user jahat bisa membuat cookie sendiri menggunakan extenstion cookie editor/EditThisCookie
+
+name = login
+value = true
+
+dengan ini hacker bisa langsung masuk dengan mudah tanpa login
+
+
+// lebih baik kita simpan cookie nya pada database agar lebih aman
+
+
+// dokumentasi php - hash
+https://www.php.net/manual/en/function.hash.php
