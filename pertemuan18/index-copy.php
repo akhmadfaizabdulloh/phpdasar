@@ -11,24 +11,72 @@ require 'functions.php';
 
 // pagination
 
+// $mahasiswa = query("SELECT * FROM mahasiswa");
+
+// $mahasiswa = query("SELECT * FROM mahasiswa LIMIT 1,2");
+
+// $mahasiswa = query("SELECT * FROM mahasiswa LIMIT 5,3");
+
 // konfigurasi
 $jumlahDataPerhalaman = 2;
+
+// jumlah halaman = total data / data perhalaman
+
+// mencari total data
+$result = mysqli_query($conn, "SELECT * FROM mahasiswa");
+$jumlahData = mysqli_num_rows($result);
+var_dump($jumlahData); 
+
+// atau bisa mencari total data menggunakan query yg sudah kita punya
 $jumlahData = count(query("SELECT * FROM mahasiswa"));
+var_dump($jumlahData);
+
+// mencari jumlah halaman
+// mencoba menggunakan round() , floor(), ceil()
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
+var_dump($jumlahHalaman);
+
+// round() >>> untuk membulatkan bilangan pecahan ke desimal terdekatnya. (dibulatkan ke atas)
+// floor() >>> pembuatannya ke bawah (floor = lantai)
+// ceil() >>> pembulatannya ke atas (ceiling = langit-langit)
 
 
+// mengecek halaman yang aktif
+// $halamanAktif = $_GET["halaman"];
+// var_dump($halamanAktif);
+// http://localhost/phpdasar/pertemuan18/index.php?halaman=2
+
+
+// agar tidak error saat tidak menuliskan index.php?halaman=2 (tampilkan saja halaman pertama)
 if(isset($_GET["halaman"])) {
     $halamanAktif = $_GET["halaman"];
 } else {
     $halamanAktif = 1;
 }
+var_dump($halamanAktif);
 
-
+// agar if else bisa lebih singkat (efektif) kita gunakan operator ternari
 $halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
+
+// cara baca :
+// (?) = jika kondisinya bernilai true 
+// maka $halamanAktif di isi dengan $_GET["halaman"]
+// (:) = jika false $halamanAktif diisi dengan ankga 1
+
+
+
+// mencari awal data setiap halaman
+
+// jika $jumlahDataPerhalaman = 2;
+// halaman2, awalData = 2 (karna halaman1 dimulai dari 0)
+// halaman3, awalData = 4
+
 $awalData = ($jumlahDataPerhalaman * $halamanAktif) - $jumlahDataPerhalaman;
 
 
+
 $mahasiswa = query("SELECT * FROM mahasiswa LIMIT $awalData, $jumlahDataPerhalaman");
+
 
 
 
@@ -64,7 +112,7 @@ if ( isset($_POST["cari"]) ) {
         <button type="submit" name="cari">Cari!</button>
 
     </form>
-    <br>
+    
 
     <!-- navigasi -->
 
