@@ -38,13 +38,15 @@ if ( isset($_POST["cari"]) ) {
 
     <form action="" method="post">
 
-        <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
-        <button type="submit" name="cari">Cari!</button>
+        <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off" id="keyword">
+        <button type="submit" name="cari" id="tombol-cari">Cari!</button>
 
     </form>
 
     <br>
 
+    <!-- kita buat sebuah wadah dengan div untuk tabelna, karna ini yang nanti datanya akan berubah-->
+    <div id="container">
     <table border="1" cellpadding="10" cellspacing="0">
 
     <tr>
@@ -76,5 +78,9 @@ if ( isset($_POST["cari"]) ) {
     <?php endforeach; ?>
 
     </table>
+    </div> 
+
+    <!-- Supaya JS-nya mudah untuk mengambil element2 didalam HTML-nya/DOM-nya, Tandai setiap element yang di butuhkan -->
+    <script src="js/script.js"></script>
 </body>
 </html>
