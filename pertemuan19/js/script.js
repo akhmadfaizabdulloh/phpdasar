@@ -24,3 +24,38 @@ var container = document.getElementById('container');
 //     alert('berhasil!!!')
 // });
 
+
+// tambahkan event ketika keyworad ditulis
+keywoard.addEventListener('keyup', function() {
+    // alert('ok');
+    // console.log(keywoard.value);
+
+    // buat object ajax
+    var xhr = new XMLHttpRequest();
+    // object ajax hanya ada di browser tertentu
+
+
+    // cek kesiapan ajax
+    xhr.onreadystatechange = function() {
+        if( xhr.readyState == 4 && xhr.status == 200 ) {
+            // 4 >>> ready
+            // 200 >>> OK!
+
+            // console.log('ajax ok!');
+
+            // console.log(xhr.responseText);
+            // untuk menampilkan isi dari ajax/coba.txt
+
+            container.innerHTML = xhr.responseText;
+        }
+    }
+
+    // eksekusi ajax
+    xhr.open('GET', 'ajax/coba.txt', true);
+    // true >>> ashyncronus
+
+    xhr.send();
+    
+});
+
+// keypress/keyup
