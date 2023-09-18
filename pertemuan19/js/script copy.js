@@ -54,7 +54,7 @@ keywoard.addEventListener('keyup', function() {
     // xhr.open('GET', 'ajax/coba.txt', true);
     // true >>> ashyncronus
 
-    // xhr.open('GET', 'ajax/test.php', true);
+    xhr.open('GET', 'ajax/test.php', true);
 
 
     xhr.send();
