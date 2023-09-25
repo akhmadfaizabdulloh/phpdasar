@@ -80,6 +80,9 @@ if ( isset($_POST["cari"]) ) {
     </table>
     </div> 
 
+    <!-- pastikan memanggil jquery-nya sebelum memanggil script punya kita sendiri atau letakkan di head-->
+    <script src="js/code.jquery.com_jquery-3.7.1.min.js"></script>
+
     <!-- Supaya JS-nya mudah untuk mengambil element2 didalam HTML-nya/DOM-nya, Tandai setiap element yang di butuhkan -->
     <script src="js/script.js"></script>
 </body>

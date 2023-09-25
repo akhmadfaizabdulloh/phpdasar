@@ -1,24 +1,27 @@
-// ambil elemen2 yang dibutuhkan
-var keywoard = document.getElementById('keyword');
-var tombolCari = document.getElementById('tombol-cari');
-var container = document.getElementById('container');
+// jika <script src="js/script.js"></script> di letakkan pada head, maka tidak akan terdeteksi element yg id-nya "keyword" karna script di eksekusi dari atas kebawah
 
-// tambahkan event ketika keyworad ditulis
-keywoard.addEventListener('keyup', function() {
-
-    // buat object ajax
-    var xhr = new XMLHttpRequest();
+// var keyword = document.getElementById('keyword');
+// keyword.addEventListener('keyup', function() {
+//     console.log('ok');
+// });
 
 
-    // cek kesiapan ajax
-    xhr.onreadystatechange = function() {
-        if( xhr.readyState == 4 && xhr.status == 200 ) {
-            container.innerHTML = xhr.responseText;
-        }
-    }
+// dengan ini kita menunggu semua dokumen sudah ready, baru kita jalankan fungsinya
+// $(document).ready(function() {
+//     var keyword = document.getElementById('keyword');keyword.addEventListener('keyup', function() {
+//         console.log('ok');
+//     });
+// });
 
-    // eksekusi ajax
-    xhr.open('GET', 'ajax/mahasiswa.php?keyword=' + keywoard.value , true);
-    xhr.send();
-    
+
+// $(document) >>> sama dengan jquey(document)
+
+$(document).ready(function() {
+    // event ketika keyword ditulis
+    $('#keyword').on('keyup', function() {
+        $('#container').load('ajax/mahasiswa.php?keyword=' + $('#keyword').val());
+    });
 });
+
+
+// fungsi load memiliki keterbatasan karna hanya bisa menggunakan GET saja, tidak bisa POST 
