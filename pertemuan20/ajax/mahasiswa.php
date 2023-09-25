@@ -1,4 +1,13 @@
 <?php
+// simulasi seolah-olah loadingnya agak lama
+sleep(1);
+// atau kalau terlalu lama bisa pakai
+usleep(500000);
+
+// usleep(micro_second), karna tidak bisa sleep(0.5) >> minimal 1 detik
+// 1 detik = 1000000 >>> 1jt
+// 0.5 detik = 500000 >>> 500rb
+
 require '../functions.php';
 
 $keyword = $_GET["keyword"];

@@ -22,7 +22,22 @@ $(document).ready(function() {
 
     // event ketika keyword ditulis
     $('#keyword').on('keyup', function() {
-        $('#container').load('ajax/mahasiswa.php?keyword=' + $('#keyword').val());
+        // munculkan icon loading
+        $('.loader').show();
+
+        // ajax menggunakan load
+        // $('#container').load('ajax/mahasiswa.php?keyword=' + $('#keyword').val());
+
+
+        // load >>> simple, hanya mengambil data dari sumber menggunakan get
+        // $.get() >>> sama persis dengan load, tapi bisa melakukan sesuatu
+
+        $.get('ajax/mahasiswa.php?keyword=' + $('#keyword').val(), function(data) {
+            $('#container').html(data);
+            $('.loader').hide();
+        });
+
+        // function(data) >>> sama dengan xhr responText pada pertemuan sebelumnya
     });
 });
 
