@@ -46,7 +46,7 @@ if ( isset($_POST["cari"]) ) {
 <body>
 
 
-    <a href="logout.php" class="logout">Logout</a>
+    <a href="logout.php" class="logout">Logout</a> | <a href="cetak.php" target="_blank">Cetak</a>
 
 
     <h1>Daftar Mahasiswa</h1>
