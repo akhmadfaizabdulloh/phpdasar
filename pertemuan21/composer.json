@@ -1,0 +1,17 @@
+{
+    "name": "fafaiez/pertemuan21",
+    "autoload": {
+        "psr-4": {
+            "Fafaiez\\Pertemuan21\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "akhmadfaizabdulloh",
+            "email": "akhmadfaizabdulloh@gmail.com"
+        }
+    ],
+    "require": {
+        "mpdf/mpdf": "^6.1"
+    }
+}
