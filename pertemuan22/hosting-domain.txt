@@ -1,0 +1,8 @@
+Cpanel > Alter PHP Config
+Hidupkan  "Display Error"
+PHP Timezone : Asia/Jakarta
+
+
+Cpanel > Databases > phpMyAdmin
+buat database baru
+konfigurasi ulang koneksi database mengikuti default hosting pada file functions.php
